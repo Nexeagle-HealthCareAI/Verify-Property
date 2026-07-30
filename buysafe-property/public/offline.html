@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offline — BuySafe Property</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: hsl(220, 85%, 18%);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .icon { font-size: 4rem; margin-bottom: 24px; }
+    h1 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; }
+    p { color: hsl(0 0% 100% / 0.70); font-size: 0.9375rem; line-height: 1.6; max-width: 400px; margin-bottom: 32px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 0.875rem 2rem; border-radius: 999px;
+      background: hsl(38, 95%, 52%); color: hsl(30, 60%, 12%);
+      font-weight: 700; font-size: 0.9375rem; cursor: pointer;
+      border: none; text-decoration: none;
+      transition: transform 200ms, box-shadow 200ms;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px hsl(38 95% 52% / 0.4); }
+    .cached-note {
+      margin-top: 32px;
+      font-size: 0.75rem;
+      color: hsl(0 0% 100% / 0.45);
+    }
+  </style>
+</head>
+<body>
+  <div class="icon">📡</div>
+  <h1>You're Offline</h1>
+  <p>
+    No internet connection. Previously visited property pages are still available.
+    Reconnect to browse all verified listings.
+  </p>
+  <a href="/" class="btn" onclick="window.location.reload()">
+    ↺ Try Again
+  </a>
+  <p class="cached-note">
+    🏡 BuySafe Property — Kishanganj's Verified Property Platform
+  </p>
+</body>
+</html>

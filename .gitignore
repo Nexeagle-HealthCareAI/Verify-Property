@@ -1,0 +1,28 @@
+# Node
+node_modules/
+.next/
+dist/
+out/
+build/
+.env*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+venv/
+env/
+.venv/
+.env/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# DB
+*.sqlite3
+sql_app.db
+
+# OS
+.DS_Store
+Thumbs.db

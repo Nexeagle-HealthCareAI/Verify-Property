@@ -1,0 +1,41 @@
+name: Deploy Backend to e2e VM
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'buysafe-backend/**'
+  workflow_dispatch: # Allows manual triggering from GitHub UI
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to e2e VM via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VM_HOST }}        # e.g., 151.185.45.77
+          username: ${{ secrets.VM_USER }}    # Your VM UserID
+          password: ${{ secrets.VM_PASSWORD }} # Your VM Password
+          # If using FCHR token for VPN/Access before SSH, that needs to be handled via a VPN step first.
+          # But if the VM is directly accessible via IP, SSH password auth works.
+          port: 22
+          script: |
+            # 1. Navigate to the project directory (adjust path if needed)
+            cd /path/to/your/project/Buyers-Agents-Website/buysafe-backend
+            
+            # 2. Pull the latest code from GitHub
+            git pull origin main
+            
+            # 3. Build the Docker images and start the containers in detached mode
+            docker-compose up -d --build
+            
+            # 4. Wait a few seconds for PostgreSQL to initialize (optional, but safe)
+            sleep 5
+            
+            # 5. Run the Alembic database migrations inside the FastAPI container
+            docker-compose exec -T buysafe-api alembic upgrade head
+            
+            echo "Deployment to e2e VM complete!"
