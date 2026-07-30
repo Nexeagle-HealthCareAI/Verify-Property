@@ -29,7 +29,7 @@ const ALL_PROPERTIES: Property[] = [
     buySafeScoreMax: 110,
     areaDisplay: "450 sq ft",
     locationDisplay: "Near NH-27, Kishanganj",
-    thumbnail: "https://images.unsplash.com/photo-1565515613-ef1e08b9a9a5?w=400&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&q=80",
   },
   {
     id: "prop-003",
