@@ -6,8 +6,7 @@ import { BottomNav } from "@/components/layout/BottomNav";
 import { FloatingActions } from "@/components/layout/FloatingActions";
 
 // Lazy load non-critical components
-const OfflineBanner    = dynamic(() => import("@/components/pwa/OfflineBanner"),    { ssr: false });
-const PWAInstallPrompt = dynamic(() => import("@/components/pwa/InstallPrompt"),    { ssr: false });
+import { PWAComponents } from "@/components/pwa/PWAComponents";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://buysafe.in"),
@@ -96,8 +95,8 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {/* Offline status banner (CSR only) */}
-        <OfflineBanner />
+        {/* PWA components (CSR only) */}
+        <PWAComponents />
 
         {/* Top navigation (desktop sidebar / mobile header) */}
         <TopNav />
@@ -113,8 +112,7 @@ export default function RootLayout({
         {/* Floating WhatsApp / Call / Visit buttons */}
         <FloatingActions />
 
-        {/* PWA install prompt (Android-style) */}
-        <PWAInstallPrompt />
+        {/* PWA install prompt is inside PWAComponents */}
       </body>
     </html>
   );

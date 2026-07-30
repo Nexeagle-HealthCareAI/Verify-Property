@@ -7,14 +7,12 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const FavouritesClient = dynamic(() => import("@/components/properties/FavouritesClient"), {
-  ssr: false, // Favourites rely on localStorage which is browser-only
-});
+import FavouritesClientWrapper from "@/components/properties/FavouritesClientWrapper";
 
 export default function FavouritesPage() {
   return (
     <div style={{ paddingTop: "var(--nav-height-mobile)", minHeight: "100vh" }}>
-      <FavouritesClient />
+      <FavouritesClientWrapper />
     </div>
   );
 }
