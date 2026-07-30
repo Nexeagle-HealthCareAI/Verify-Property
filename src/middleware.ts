@@ -61,17 +61,18 @@ export function middleware(req: NextRequest) {
     }
   }
 
-  /* ── Protected Routes ── */
-  const protectedPaths = ["/dashboard", "/favourites", "/visits", "/profile"];
-  const isProtected = protectedPaths.some((p) => pathname.startsWith(p));
+  // Define paths that require authentication
+  const protectedPaths = ["/dashboard", "/favourites", "/visits", "/profile", "/admin"];
+  const isProtectedPath = protectedPaths.some((path) =>
+    req.nextUrl.pathname.startsWith(path)
+  );
 
-  if (isProtected) {
-    const token = req.cookies.get("next-auth.session-token")
-      ?? req.cookies.get("__Secure-next-auth.session-token");
-
-    if (!token) {
+  if (isProtectedPath) {
+    const adminToken = req.cookies.get("admin_token");
+    // For now, any presence of admin_token allows access to all protected paths
+    if (!adminToken) {
       const loginUrl = new URL("/login", req.url);
-      loginUrl.searchParams.set("callbackUrl", pathname);
+      loginUrl.searchParams.set("callbackUrl", req.nextUrl.pathname);
       return NextResponse.redirect(loginUrl);
     }
   }

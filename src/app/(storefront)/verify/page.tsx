@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, ShieldCheck, FileCheck, Crown, ArrowRight } from "lucide-react";
-import { VerificationTierDisplay } from "@/components/property/VerificationBadge";
 
 export const metadata: Metadata = {
   title: "Property Verification — BuySafe Property",
@@ -72,8 +71,8 @@ export default function VerifyPage() {
             {TIERS.map((t) => (
               <div key={t.tier} className="card" style={{ padding: "var(--space-6)" }}>
                 <div style={{ display: "flex", alignItems: "flex-start", gap: "var(--space-4)", flexWrap: "wrap" }}>
-                  <div style={{ flexShrink: 0, marginTop: 4 }}>
-                    <VerificationTierDisplay tier={t.tier as any} />
+                  <div style={{ flexShrink: 0, marginTop: 4, background: "var(--surface-light)", padding: 12, borderRadius: "50%" }}>
+                    {t.icon}
                   </div>
                   <div style={{ flex: 1, minWidth: 250 }}>
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "var(--text-xl)", marginBottom: "var(--space-2)" }}>

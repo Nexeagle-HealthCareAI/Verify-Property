@@ -40,7 +40,6 @@ export function PropertyCategories() {
               key={label}
               href={href}
               role="listitem"
-              style={{ textDecoration: "none" }}
               className="animate-fade-up"
               style={{
                 textDecoration: "none",
