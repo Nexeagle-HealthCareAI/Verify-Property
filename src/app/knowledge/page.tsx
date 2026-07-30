@@ -93,10 +93,8 @@ export default function KnowledgePage() {
               display: "grid", gridTemplateColumns: "1fr",
               background: "linear-gradient(135deg, var(--color-primary), var(--color-primary-light))",
               borderRadius: "var(--radius-xl)", overflow: "hidden", color: "white",
-              transition: "transform var(--transition-base), box-shadow var(--transition-base)",
             }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)"; (e.currentTarget as HTMLElement).style.boxShadow = "var(--shadow-xl)"; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.transform = "none"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
+              className="card"
             >
               <div style={{ padding: "var(--space-8)" }}>
                 <span style={{
