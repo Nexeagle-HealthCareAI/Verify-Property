@@ -81,9 +81,10 @@ export function middleware(req: NextRequest) {
   const response = NextResponse.next();
 
   /* Content Security Policy */
+  const isDev = process.env.NODE_ENV !== "production";
   const csp = [
     `default-src 'self'`,
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
+    isDev ? `script-src 'self' 'unsafe-eval' 'unsafe-inline'` : `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
     `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com`,
     `font-src 'self' https://fonts.gstatic.com`,
     `img-src 'self' data: blob: https://*.cloudinary.com https://images.unsplash.com https://*.openstreetmap.org https://tile.openstreetmap.org`,
