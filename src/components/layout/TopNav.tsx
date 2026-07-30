@@ -19,6 +19,7 @@ const navLinks = [
 export function TopNav() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -29,6 +30,7 @@ export function TopNav() {
 
   useEffect(() => {
     setMenuOpen(false);
+    setDropdownOpen(false);
   }, [pathname]);
 
   // Lock scroll when mobile menu open
@@ -60,11 +62,19 @@ export function TopNav() {
                 {link.label}
               </Link>
             ))}
-            <div className={styles.navDropdown}>
-              <button className={styles.navLink}>
+            <div 
+              className={styles.navDropdown}
+              onMouseEnter={() => setDropdownOpen(true)}
+              onMouseLeave={() => setDropdownOpen(false)}
+            >
+              <button 
+                className={styles.navLink} 
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                aria-expanded={dropdownOpen}
+              >
                 More <ChevronDown size={14} />
               </button>
-              <div className={styles.dropdown}>
+              <div className={`${styles.dropdown} ${dropdownOpen ? styles.dropdownOpen : ""}`}>
                 {navLinks.slice(5).map((link) => (
                   <Link key={link.href} href={link.href} className={styles.dropdownItem}>
                     {link.label}

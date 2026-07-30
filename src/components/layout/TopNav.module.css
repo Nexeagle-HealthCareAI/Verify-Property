@@ -92,7 +92,8 @@
   position: relative;
 }
 
-.navDropdown:hover .dropdown { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.navDropdown:hover .dropdown,
+.dropdown.dropdownOpen { opacity: 1; pointer-events: auto; transform: translateY(0); }
 
 .dropdown {
   position: absolute;
